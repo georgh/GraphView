@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
@@ -42,14 +43,14 @@ dependencies {
 //this is used to generate .jar files and push to maven repo
 // This is the actual solution, as in http://stackoverflow.com/a/19037807/1002054
 task clearJar(type: Delete) {
-    delete 'build/outputs/myCompiledLibrary.jar'
+    delete 'build/outputs/graphview.jar'
 }
 
 task makeJar(type: Copy) {
     from('build/intermediates/bundles/release/')
     into('build/outputs/')
     include('classes.jar')
-    rename ('classes.jar', 'myCompiledLibrary.jar')
+    rename ('classes.jar', 'graphview.jar')
 }
 
 makeJar.dependsOn(clearJar, build)
